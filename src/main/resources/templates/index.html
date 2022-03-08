@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<head>
+    <meta charset="UTF-8">
+    <title>地图/人群密度可视化模块</title>
+    <script src="/fatavay/js/jquery-3.5.0.js"></script>
+    <script src="/fatavay/js/echarts.js"></script>
+    <script src="/fatavay/js/index-echarts.js" type="module"></script>
+    <script src="/fatavay/js/index.js"></script>
+
+    <!-- Favicon icon -->
+    <!--    <link rel="icon" type="image/png" sizes="16x16" href="../static/images/favicon.png">-->
+    <!-- Pignose Calender -->
+    <link href="/fatavay/plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
+    <!-- Chartist -->
+    <link rel="stylesheet" href="/fatavay/plugins/chartist/css/chartist.min.css">
+    <link rel="stylesheet" href="/fatavay/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
+    <!-- Custom Stylesheet -->
+    <link href="/fatavay/css/style.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/fatavay/css/index.css">
+
+</head>
+<body style="background-color: black;">
+<!-- 全局设备监控告警 -->
+<div id="warn-device">
+    <a id="warn-shine" title="设备故障告警" onclick="openDiv()">
+        <i class="fa fa-bell fa-2x text" style="color: white"></i>
+        <div id="warn-number">
+            <span id="warn-number-text">4</span>
+        </div>
+    </a>
+</div>
+
+<!-- 独立告警模块 -->
+<div id="cam-warn" class="card-body">
+    <div>
+        <h2 style="color: white; text-align: center">设备故障通知</h2>
+    </div>
+    <div style="margin-top: 3%">
+        <span style="color: white">*设备故障影响系统运行，请尽快检修</span>
+    </div>
+    <div style=" margin-left: 5%">
+        <table class="table table-xs mb-0" style="color: white; border: 0; font-size: 16px">
+            <thead style="color: #e2e2e2">
+            <tr>
+                <th>序号</th>
+                <th>设备类型</th>
+                <th>设备ID</th>
+                <th>设备地址</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th>1</th>
+                <th>摄像头</th>
+                <th>Cam_002</th>
+                <th>区域2</th>
+            </tr>
+            <tr>
+                <th>2</th>
+                <th>摄像头</th>
+                <th>Cam_005</th>
+                <th>区域3</th>
+            </tr>
+            <tr>
+                <th>3</th>
+                <th>摄像头</th>
+                <th>Cam_008</th>
+                <th>区域4</th>
+            </tr>
+            <tr>
+                <th>4</th>
+                <th>摄像头</th>
+                <th>Cam_011</th>
+                <th>区域5</th>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div style="width: 100%; height: 20%; float: bottom; margin-left: 40%; margin-top: 5%">
+        <button id="warn-btn-device" class="execute_btn" style="width: 17%; height: 50%" onclick="closeDiv()">我知道了</button>
+    </div>
+</div>
+
+<!-- 预警模块，弹出对话框 -->
+<div id="warn-div-future" style="width: 100%; height: 100%; display: none">
+    <div id="warning-future">
+        <h1 style="color: white; text-align: center; margin-top: 6.5%">预测危险警告</h1>
+        <h2 style="color: white; margin-left: 1%; margin-top: 8%">『 <span id="warn-div-future-name-1">区域3</span> 』人员密度：『 <span id="warn-div-future-data">1.5</span> 』人/m<sup>2</sup></h2>
+        <h2 style="color: white; margin-left: 3%; margin-top: 8%">预测『 <span id="warn-div-future-name-2">区域3</span> 』安全等级：<span id="warn-div-future-level">3</span>级，危险</h2>
+        <h2 style="color: white; margin-left: 3%; margin-top: 8%; display: inline-block; vertical-align: bottom">建议采用的预案：</h2>
+        <h1 style="color: white; margin-top: 4%; display: inline-block; vertical-align: bottom">『 <span id="warn-div-future-plan">三</span> 』</h1>
+        <h2 style="color: white; margin-top: 4%; display: inline-block; vertical-align: bottom">号预案</h2>
+        <br>
+        <span style="color: white; display: inline-block; margin-left: 50%; margin-top: 8%">选择其他预案：</span>
+    </div>
+</div>
+
+<!-- 现在警告模块，弹出对话框 -->
+<div id="warn-div-now" style="width: 100%; height: 100%; display: none">
+    <div id="warning-now">
+        <h1 style="color: white; text-align: center; margin-top: 6.5%">危险警告</h1>
+        <h2 style="color: white; margin-left: 1%; margin-top: 8%">『 <span id="warn-div-now-name-1">区域3</span> 』人员密度：『 <span id="warn-div-now-data">1.5</span> 』人/m<sup>2</sup></h2>
+        <h2 style="color: white; margin-left: 3%; margin-top: 8%">当前『 <span id="warn-div-now-name-2">区域3</span> 』安全等级：<span id="warn-div-now-level">3</span>级，危险</h2>
+        <h2 style="color: white; margin-left: 3%; margin-top: 8%; display: inline-block; vertical-align: bottom">建议采用的预案：</h2>
+        <h1 style="color: white; margin-top: 4%; display: inline-block; vertical-align: bottom">『 <span id="warn-div-now-plan">三</span> 』</h1>
+        <h2 style="color: white; margin-top: 4%; display: inline-block; vertical-align: bottom">号预案</h2>
+        <br>
+        <span style="color: white; display: inline-block; margin-left: 50%; margin-top: 8%">选择其他预案：</span>
+    </div>
+</div>
+
+<br>
+<!-- 历史数据模块 -->
+<div id="history">
+    <!-- 人员密度横向对比图 -->
+    <div id="num_dif" style="width: 400px; height: 280px; display: inline-block; z-index: 1"></div>
+    <!-- 某区域人员密度数据曲线 -->
+    <div id="num_history" style="width: 400px; height: 250px; display: inline-block; z-index: 1"></div>
+    <!-- 当前人员密度热力图 -->
+</div>
+
+<!-- 现在的热力图 -->
+<div id="now">
+   <div id="now_c1">
+       <img src="/fatavay/images/西负二地铁口-底图.JPG.lin.jpg" id="qczImg">
+       <div id="th_chart_now" style="width: 600px; height: 400px; display: inline-block; z-index: 1;opacity: 0.8; ">
+			
+     	</div>
+   </div>
+    
+    <!-- Tips-now区域 -->
+    <div>
+        <span style="color: #edf1f9; display: inline-block; vertical-align: top; font-size: 18px; font-weight: bold; margin-left: 17%;">当前告警tips</span>
+        <button type="button" id="ignore-all-now" class="execute_btn" onclick="ignoreAll(this);">忽略全部</button>
+    </div>
+    <div id="tips-now"></div>
+</div>
+
+<!-- 未来的热力图 -->
+<div id="future">
+	<div id="future_c1">
+		<img src="/fatavay/images/西负二地铁口-底图.JPG.lin.jpg" id="qczImg2">
+		<div id="th_chart_future" style="width: 430px; height: 380px; display: inline-block; z-index: 1"></div>
+	</div>
+
+    <!-- Tips区域 -->
+    <div>
+        <span style="color: #edf1f9; display: inline-block; vertical-align: top; font-size: 18px; font-weight: bold; margin-top: 0%">预测5分钟后告警tips</span>
+        <button type="button" id="ignore-all-future" class="execute_btn" style="margin-top: 0%" onclick="ignoreAll(this);">忽略全部</button>
+    </div>
+    <div id="tips-future"></div>
+</div>
+
+</body>
+<link rel="stylesheet" type="text/css" href="/fatavay/css/index_yl.css"/>
+<script src="/fatavay/js/index_yl.js" type="module" charset="utf-8"></script>
+</html>

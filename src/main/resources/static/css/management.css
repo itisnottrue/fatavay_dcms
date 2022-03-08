@@ -1,0 +1,139 @@
+#addCam, #addSer, #updateCam, #updateSer{
+    position: absolute;
+    width: 40%;
+    height: 600px;
+    background: white;
+    z-index: 10;
+    margin-left: 15%;
+    border: 2px solid #a9a9a9;
+    border-radius: 10px;
+    display: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#deleteCam, #deleteSer {
+    position: absolute;
+    width: 40%;
+    height: 200px;
+    background: white;
+    z-index: 10;
+    margin-left: 18%;
+    margin-top: 5%;
+    border: 2px solid #a9a9a9;
+    border-radius: 10px;
+    display: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#deleteCam-a:hover {
+    color: #5599FF;
+    cursor: pointer;
+}
+
+#deleteSer-a:hover {
+    color: #5599FF;
+    cursor: pointer;
+}
+
+#deleteIcon:hover {
+    color: #ff7676;
+    cursor: pointer;
+}
+
+#cam-warn {
+    position: absolute;
+    width: 40%;
+    height: 450px;
+    background: #ff3939;
+    z-index: 10;
+    margin-top: 3%;
+    margin-left: 15%;
+    border: 2px solid #a9a9a9;
+    border-radius: 10px;
+    display: none;
+}
+
+#addCam-a:hover {
+    color: #5599FF;
+    cursor: pointer;
+}
+
+#addSer-a:hover {
+    color: #5599FF;
+    cursor: pointer;
+}
+
+#updateCam-a:hover {
+    color: #5599FF;
+    cursor: pointer;
+}
+
+#updateSer-a:hover {
+    color: #5599FF;
+    cursor: pointer;
+}
+
+.execute_btn {
+    /*float: right;*/
+    /*margin-right: 10%;*/
+    /*margin-top: 1%;*/
+    width: 12%;
+    height: 8%;
+    border-width: 0px;
+    border-radius: 6px;
+    background: #1E90FF;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    display: inline-block;
+}
+.execute_btn:hover {
+    background: #5599FF;
+}
+.execute_btn:disabled {
+    pointer-events: none;
+    background: #efefef4d;
+    color: #1010104d;
+    border: 1px solid #1010104d;
+}
+
+/*警告图标闪烁效果*/
+@keyframes shine {
+    from {
+        opacity: 1.0;
+    }
+    50% {
+        opacity: 0.2;
+    }
+    to {
+        opacity: 1.0;
+    }
+}
+@-webkit-keyframes shine {
+    from {
+        opacity: 1.0;
+    }
+    50% {
+        opacity: 0.2;
+    }
+    to {
+        opacity: 1.0;
+    }
+}
+
+#warn-shine {
+    float: right;
+    display: inline-block;
+    margin-right: 1%;
+    margin-top: 2%;
+    animation: shine 1000ms infinite;
+    -webkit-animation: shine 1000ms infinite;
+}
+#warn-shine:hover {
+    color: red;
+    cursor: pointer;
+    animation: none;
+    -webkit-animation: none;
+}

@@ -1,0 +1,313 @@
+#warning-future, #warning-now {
+    left: 12%;
+    margin-top: 5%;
+    width: 40%;
+    height: 470px;
+    position: absolute;
+    z-index: 10;
+    background: #d90000;
+    border: 2px solid white;
+    border-radius: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: block;
+}
+
+.list {
+    left: 54%;
+    margin-top: 5%;
+    width: 34%;
+    height: 470px;
+    position: absolute;
+    background: #d3f0ff;
+    z-index: 10;
+    border: 2px solid #a9a9a9;
+    border-radius: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: block;
+}
+
+.execute_btn {
+    /*float: right;*/
+    /*margin-right: 10%;*/
+    /*margin-top: 1%;*/
+    width: 12%;
+    height: 8%;
+    border-width: 0px;
+    border-radius: 6px;
+    background: #1E90FF;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    display: inline-block;
+}
+.execute_btn:hover {
+    background: #5599FF;
+}
+.execute_btn:disabled {
+    pointer-events: none;
+    background: #efefef4d;
+    color: #1010104d;
+    border: 1px solid #1010104d;
+}
+
+.execute_btn_al {
+    /*float: right;*/
+    /*margin-right: 10%;*/
+    /*margin-top: 1%;*/
+    width: 18%;
+    height: 8%;
+    border-width: 0px;
+    border-radius: 6px;
+    background: red;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    display: inline-block;
+}
+.execute_btn_al:hover {
+    background: #ff3636;
+}
+
+.time {
+    color: #5f5f5f;
+}
+
+#history {
+    width: 400px;
+    display: inline-block;
+    float: left;
+}
+
+#now {
+    width: 600px;
+    display: inline-block;
+    vertical-align: top;
+    float: left;
+}
+
+#future {
+		margin-left: 3px;
+    width: 430px;
+    display: inline-block;
+    vertical-align: top;
+    float: left;
+}
+
+#shine_pred {
+    width: 390px;
+    height: 300px;
+    display: block;
+    border: 1px solid white;
+    margin-top: 5%;
+}
+
+#ignore-all-future {
+    width: 20%;
+    display: inline-block;
+    margin-top: 5%;
+    float: right;
+    margin-right: 13%;
+    background: white;
+    color: #585858;
+}
+#ignore-all-future:hover {
+    background: #5599FF;
+    color: white;
+}
+
+#tips-future {
+    width: 390px;
+    height: 155px;
+    display: block;
+    border: 1px solid white;
+    margin-top: 3%;
+    background: #edf0f8;
+    border-radius: 5px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#tips-now {
+    width: 390px;
+    height: 155px;
+    display: block;
+    border: 1px solid white;
+    margin-top: 2%;
+    margin-left: 17%;
+    background: #edf0f8;
+    border-radius: 5px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#ignore-all-now {
+    width: 13%;
+    display: inline-block;
+    /*margin-top: 5%;*/
+    float: right;
+    margin-right: 21%;
+    background: white;
+    color: #585858;
+}
+#ignore-all-now:hover {
+    background: #5599FF;
+    color: white;
+}
+
+.tips-div {
+    margin-top: 2%;
+    width: 100%;
+}
+
+.tips-span {
+    margin-left: 5%;
+    color: #585858;
+}
+
+.tips-btn {
+    display: inline-block;
+    width: 30%;
+    float: right;
+}
+
+.zone_div {
+    width: 128px;
+    height: 148px;
+    display: inline-block;
+    background: black;
+    float: left;
+    border: 1px solid black;
+}
+
+.zone_shine {
+    width: 128px;
+    height: 126px;
+    display: inline-block;
+    background: red;
+    float: left;
+}
+
+/* div闪烁 */
+@keyframes shine {
+    from {
+        opacity: 1.0;
+    }
+    50% {
+        opacity: 0;
+    }
+    to {
+        opacity: 1.0;
+    }
+}
+
+@-webkit-keyframes shine {
+    from {
+        opacity: 1.0;
+    }
+    50% {
+        opacity: 0;
+    }
+    to {
+        opacity: 1.0;
+    }
+}
+
+#shine-1 {
+    animation: shine 600ms infinite;
+    -webkit-animation: shine 333ms infinite;
+}
+
+#shine-2 {
+    animation: shine 1s infinite;
+    -webkit-animation: shine 1s infinite;
+}
+
+#shine-3 {
+    animation: shine 2s infinite;
+    -webkit-animation: shine 2s infinite;
+}
+
+/* 监控告警 */
+#warn-device {
+    width: 5%;
+    height: 80px;
+    position: absolute;
+    margin-left: 95%;
+    margin-top: 1.6%;
+    z-index: 10;
+}
+
+#cam-warn {
+    position: absolute;
+    width: 40%;
+    height: 450px;
+    background: #ff3939;
+    z-index: 10;
+    margin-top: 5%;
+    margin-left: 30%;
+    border: 2px solid #a9a9a9;
+    border-radius: 10px;
+    display: none;
+}
+
+/*警告图标闪烁效果*/
+@keyframes shine {
+    from {
+        opacity: 1.0;
+    }
+    50% {
+        opacity: 0.2;
+    }
+    to {
+        opacity: 1.0;
+    }
+}
+@-webkit-keyframes shine {
+    from {
+        opacity: 1.0;
+    }
+    50% {
+        opacity: 0.2;
+    }
+    to {
+        opacity: 1.0;
+    }
+}
+
+#warn-shine {
+    /*width: 100%;*/
+    /*height: 50px;*/
+    /*float: right;*/
+    display: inline-block;
+    /*margin-right: 1%;*/
+    /*margin-top: 2%;*/
+    /*animation: shine 1000ms infinite;*/
+    /*-webkit-animation: shine 1000ms infinite;*/
+}
+#warn-shine:hover {
+    color: red;
+    cursor: pointer;
+    animation: none;
+    -webkit-animation: none;
+}
+
+#warn-number {
+    position: absolute;
+    background: red;
+    width: 19px;
+    height: 19px;
+    float: top;
+    margin-left: -20%;
+    margin-top: -5%;
+    display: inline-block;
+    border-radius: 15px;
+}
+
+#warn-number-text {
+    color: white;
+    margin-left: 28%;
+    margin-bottom: 5%;
+    font-size: 15px;
+}

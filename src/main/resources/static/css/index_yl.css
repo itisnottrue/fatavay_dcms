@@ -1,0 +1,38 @@
+
+#now #now_c1{
+	width: 600px;
+	background-color: white;
+	position: relative;
+}
+
+#now #now_c1 #qczImg{
+	    width: 398px;
+	    position: absolute;
+	    top: 34px;
+	    left: 102px;
+	    height: 325px;
+ }
+}
+#now #now_c1 #th_chart_now{
+	width: 600px;
+	/* position: absolute; */
+}
+#future_c1{
+	background-color: white;
+	position: relative;
+}
+#qczImg2{
+    width: 345px;
+    position: absolute;
+    top: 48px;
+    left: 43px;
+    height: 283px;
+}
+#th_chart_now,#th_chart_future{
+		opacity: 0.8;
+}
+
+/*铃铛*/
+#warn-shine{
+	width: 100px;
+}
